@@ -22,7 +22,7 @@ LABELS_PATH = 'assets/modelclasses.txt'
 
 
 def is_relevant_image(test_image):
-    base_image = cv2.imread('models/Image1.jpg')
+    base_image = cv2.imread('assets/Image1.jpg')
 
     test_image_resized = cv2.resize(test_image, (base_image.shape[1], base_image.shape[0]))
     # Convert images to grayscale
