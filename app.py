@@ -115,7 +115,7 @@ def preprocess_image(test_image, img_size=(224, 224)):
     img_array = np.expand_dims(img_array, axis=0)
     return img_array
 
-def predict(model, label_mapping, categories, image, patient_info):
+def predict(model, label_mapping, categories, image, patient_info=None):
     img_array = preprocess_image(image)
     
     with st.spinner('Classifying...'):
