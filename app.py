@@ -145,7 +145,7 @@ def predict(model, label_mapping, categories, image, patient_info=None, selected
     st.dataframe(df_predictions, use_container_width=True)
         
     if selected_choice == "Upload Image":
-        download_patient_data(df_predictions, patient_info)
+        download_patient_data(df_predictions)
             
     elif selected_choice == "Select Existing Image":
         pass   
