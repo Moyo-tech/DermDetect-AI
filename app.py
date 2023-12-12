@@ -115,12 +115,11 @@ def preprocess_image(test_image, img_size=(224, 224)):
     img_array = np.expand_dims(img_array, axis=0)
     return img_array
 
-def predict(model, label_mapping, categories, image, patient_info=None):
+def predict(model, label_mapping, categories, image, patient_info=None, selected_choice=None):
     img_array = preprocess_image(image)
     
     with st.spinner('Classifying...'):
         predictions = model.predict(img_array)
-        predicted_class = np.argmax(predictions)
 
     probabilities = predictions[0]
 
@@ -145,8 +144,13 @@ def predict(model, label_mapping, categories, image, patient_info=None):
 
     st.dataframe(df_predictions, use_container_width=True)
         
-    download_patient_data(df_predictions)
+    if selected_choice == "Upload Image":
+        download_patient_data(df_predictions, patient_info)
+            
+    elif selected_choice == "Select Existing Image":
+        pass   
     
+     
     st.info(
         """
         :warning: **Disclaimer:**
@@ -235,13 +239,13 @@ def main():
             st.session_state.patient_info = patient_info
             result = st.button('Run on image')
             if result:
-                predictions = predict(model, label_mapping, categories, image, patient_info)
+                predictions = predict(model, label_mapping, categories, image, patient_info, selected_choice=choice)
     else:
         image = load_existing()
         if image is not None:
             result = st.button('Run on image')
             if result:
-                predict(model, label_mapping, categories, image)
+                predict(model, label_mapping, categories, image, selected_choice=choice)
     st.markdown("***")
     st.markdown(
         "Thanks for testing this out! I'd love feedback on this, so if you want to reach out you can find me on [LinkedIn](https://www.linkedin.com/in/moyosoreweke/) or check out my other projects on [Github](https://github.com/Moyo-tech)."
