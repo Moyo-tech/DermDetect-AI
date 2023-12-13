@@ -1,5 +1,5 @@
 # DermDetect-AI
-[Video Explanation Link](https://drive.google.com/file/d/14IkoZy9IAEVGteiBbNrja5Z3mDxnkpZX/view?usp=share_link)
+[Video Explanation Link](https://drive.google.com/file/d/10J2jSXMi_5FvK3Yl3xfoDVm3kq8uSZrW/view?usp=sharing)
 
 [Deployed Project](https://dermdetect-ai.streamlit.app/)
 
