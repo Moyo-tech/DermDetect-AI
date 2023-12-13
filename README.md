@@ -1,7 +1,18 @@
 # DermDetect-AI
+[Video Explanation Link](https://drive.google.com/file/d/14IkoZy9IAEVGteiBbNrja5Z3mDxnkpZX/view?usp=share_link)
+[Deployed Project On Cloud](https://agrowise-ai-summative.streamlit.app/)
+
+Table of Contents
+-  [Introduction and Background](#introduction-and-background)
+-  [The Problem](#the-problem)
+-  [Motivation and Significance](#motivation-and-significance)
+-  [The Solution](#the-solution)
+-  [The Datasets Used](#the-datasets-used)
+-  [CNN Architecture Design](#cnn-architecture-design)
+
 ## Project Overview
 ### Introduction and Background
-Skin cancer is a prevalent health concern globally, with increasing incidences requiring advanced diagnostic tools. Early detection of skin cancer is crucial for effective treatment and improved patient outcomes. This project leverages deep learning techniques to develop an efficient skin cancer classification model, capable of accurately identifying different skin cancer types based on medical images.
+Skin cancer is a prevalent health concern globally, with increasing incidences requiring advanced diagnostic tools. Early detection of skin cancer is crucial for effective treatment and improved patient outcomes. This project leverages deep learning techniques to develop an efficient skin cancer classification model capable of accurately identifying different skin cancer types based on medical images.
 
 ### The Problem
 <hr>
