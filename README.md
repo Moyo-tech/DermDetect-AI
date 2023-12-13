@@ -45,11 +45,11 @@ Refer to the provided [documentation](https://dataverse.harvard.edu/dataset.xhtm
 
 These two datasets were combined and processed to form a comprehensive and diverse dataset for training and evaluating the skin cancer classification model. The merging of these datasets enhances the model's ability to generalize and make accurate predictions across various skin lesion types.
 
-Due to upload size limitations, the images are stored in two zip files:
+Due to upload size limitations, the images are not uploaded here on GitHub, but they can be downloaded on [Kaggle](https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000).
 
-HAM10000_images_part1.zip (5000 JPEG files) Representing the Skin Cancer M.N.I.S.T.: HAM10000
+HAM10000_images_part1(5000 JPEG files) Representing the Skin Cancer M.N.I.S.T.: HAM10000
 
-HAM10000_images_part2.zip (5015 JPEG files) Representing the ISIC 2018 Challenge Training Set
+HAM10000_images_part2(5015 JPEG files) Representing the ISIC 2018 Challenge Training Set
 
 The labels available in both datasets were as follows :  
 
