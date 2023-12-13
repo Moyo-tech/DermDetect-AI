@@ -1,3 +1,5 @@
+For more detailed overview you can navigate to the main README
+
 **Data Building and Cleaning Notebook**
 * This notebook focuses on the project's initial phase, where the skin cancer datasets are collected, combined, and cleaned.
 * Covers data preprocessing steps, including handling missing values  and creating a structured dataset for model training.
