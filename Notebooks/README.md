@@ -1,4 +1,4 @@
-For more detailed overview you can navigate to the main README
+For more detailed overview you can navigate to the main [README](https://github.com/Moyo-tech/DermDetect-AI?tab=readme-ov-file#dermdetect-ai)
 
 **Data Building and Cleaning Notebook**
 * This notebook focuses on the project's initial phase, where the skin cancer datasets are collected, combined, and cleaned.
