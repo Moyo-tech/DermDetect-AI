@@ -1,6 +1,7 @@
 # DermDetect-AI
 [Video Explanation Link](https://drive.google.com/file/d/14IkoZy9IAEVGteiBbNrja5Z3mDxnkpZX/view?usp=share_link)
-[Deployed Project On Cloud](https://agrowise-ai-summative.streamlit.app/)
+
+[Deployed Project](https://dermdetect-ai.streamlit.app/)
 
 Table of Contents
 -  [Introduction and Background](#introduction-and-background)
