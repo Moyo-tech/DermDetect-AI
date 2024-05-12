@@ -66,7 +66,7 @@ The labels available in both datasets were as follows :
 | VASC        | Vascular Lesions                          |
 
 ## CNN Architecture Design
-**Pre-trained model selection :  DenseNet121**
+**Pre-trained model selection:  DenseNet121**
 
 Selecting the right pre-trained model or algorithm is crucial for achieving optimal performance in a specific problem domain. In the context of this project, DenseNet121 can be justified as a suitable choice for our algorithm for several reasons:
 
