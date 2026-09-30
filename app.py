@@ -21,10 +21,10 @@ MODEL_PATH = 'model/optimisedmodel121.h5'
 LABELS_PATH = 'assets/modelclasses.txt'
 
 def gather_patient_info():
-    st.sidebar.markdown("**Patient Information**")
-    patient_id = st.sidebar.text_input("Patient ID:")
-    age = st.sidebar.slider("Patient Age:", 1, 100, 25)
-    gender = st.sidebar.radio("Patient Gender:", ["Male", "Female", "Other"])
+    st.sidebar.markdown("**Demo metadata — do not enter real patient information**")
+    patient_id = st.sidebar.text_input("Fictional demo ID:")
+    age = st.sidebar.slider("Example age:", 1, 100, 25)
+    gender = st.sidebar.radio("Example gender:", ["Male", "Female", "Other"])
     anatomical_site = st.sidebar.selectbox("Anatomical Site:", ["Head/Neck", "Upper Limb", "Lower Limb", "Trunk", "Genital", "Other"])
 
     # Store patient information in a dictionary
@@ -70,10 +70,10 @@ def load_image():
             st.image(image_data, caption='Uploaded Image.', use_column_width=True)
 
             if is_relevant_image(test_image):
-                st.success("Your image is relevant!")
+                st.success("Image passed the experimental format check.")
 
             else:
-                st.error("The uploaded image is not relevant to skin cancer.")
+                st.error("Image did not pass the experimental format check. This check cannot determine whether an image shows a lesion.")
                 return None
                 
             return Image.open(io.BytesIO(image_data)).convert('RGB')
@@ -132,7 +132,7 @@ def predict(model, label_mapping, categories, image, patient_info=None, selected
 
     # Create a DataFrame for the predictions
     data = {'Classes': long_labels,
-            'Confidence %': all_prob}
+            'Model score (uncalibrated)': all_prob}
     df_predictions = pd.DataFrame(data)
 
     st.subheader('Top Predictions:')
@@ -140,7 +140,7 @@ def predict(model, label_mapping, categories, image, patient_info=None, selected
     top_prediction_label = long_labels[0]
     top_prediction_confidence = all_prob[0]
 
-    st.write(f"Here are the top 4 predictions. The predicted type of skin cancer is **{top_prediction_label}** with a confidence level of **{top_prediction_confidence:.2%}**.")
+    st.write(f"Top dataset label: **{top_prediction_label}** (model score {top_prediction_confidence:.2%}). This score is not a diagnosis or a calibrated probability.")
 
     st.dataframe(df_predictions, use_container_width=True)
         
@@ -154,9 +154,9 @@ def predict(model, label_mapping, categories, image, patient_info=None, selected
     st.info(
         """
         :warning: **Disclaimer:**
-        DermDetect AI is a tool designed to assist in the classification of skin cancer images, but it is not a substitute for professional medical advice, diagnosis, or treatment. The predictions made by the AI can be incorrect, and users are strongly advised to cross-check results with the guidance of a qualified healthcare professional.
+        DermDetect AI is an educational image-classification prototype, not a medical device. It has not been clinically validated. Its model scores cannot diagnose skin cancer or guide treatment. Do not enter real patient information or upload identifiable medical images.
 
-        Always consult with a medical professional for accurate and personalized medical advice.
+        If you have a health concern, consult a qualified healthcare professional.
 
         """
     )
@@ -166,17 +166,16 @@ def predict(model, label_mapping, categories, image, patient_info=None, selected
 def download_patient_data(df_predictions):
     # Create a DataFrame for patient information
     df_patient_info = pd.DataFrame(st.session_state.patient_info, index=[0])
-    patient_id = st.session_state.patient_info.get("Patient ID", "Unknown")
 
     # Combine patient information with predictions
     df_combined = pd.concat([df_patient_info, df_predictions], axis=1)
     
     # Save DataFrame to CSV and download
     csv_data = df_combined.to_csv(index=False, encoding='utf-8-sig')
-    filename = f"patient_data_{patient_id}.csv"
+    filename = "dermdetect_demo_output.csv"
 
     st.download_button(
-        label="Download Patient Data",
+        label="Download Demo Output",
         data=csv_data,
         file_name=filename,
         key="download_button"
@@ -200,7 +199,7 @@ def main():
         st.write("*Created with :heart: by [Moyo](https://github.com/Moyo-tech)*")   
         
     st.write(
-        "Welcome to DermDetect AI!:hospital: This application uses a deep learning model to classify skin cancer images into different categories. Upload an image or select an existing image to test, and the model will provide predictions along with confidence levels."
+        "DermDetect AI is an educational image-classification prototype. Use an example image to explore ranked dataset labels. Do not use the output for diagnosis or treatment, and do not upload identifiable medical images."
     )
     # Define the mapping of short-form labels to long-form labels
     label_mapping = {
