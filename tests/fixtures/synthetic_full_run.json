@@ -1,0 +1,55 @@
+{
+  "class_order": [
+    "akiec",
+    "bcc",
+    "bkl",
+    "df",
+    "mel",
+    "nv",
+    "vasc"
+  ],
+  "configuration_decisions_accepted": true,
+  "data_kind": "invented_software_fixture_no_images_or_membership",
+  "extraction": {
+    "batch_size": 1,
+    "binding": {
+      "dimension": 1152,
+      "revision": "9cea28a1a1195f665105faa6e8544c112fd960a4"
+    }
+  },
+  "resource_guards": {
+    "GPU_used_max_bytes": 21474836480,
+    "RSS_max_fraction": 0.75,
+    "available_RAM_min_bytes": 4294967296,
+    "free_disk_min_bytes": 8589934592,
+    "persistent_storage_max_bytes": 42000000000,
+    "swap_growth_max_bytes": 134217728
+  },
+  "runtime_environment": {
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "seed": 20260729,
+  "training": {
+    "TF32": false,
+    "batch_size": 16,
+    "deterministic_algorithms": true,
+    "dropout": 0.2,
+    "final_block_epochs": 20,
+    "final_block_lr": 0.0001,
+    "head_epochs": 2,
+    "head_lr": 0.001,
+    "optimizer_transition": "retain_head_add_final_block",
+    "patience": 5,
+    "patience_scope": "all_evaluated_epochs",
+    "phase2_head_lr": 0.001,
+    "precision": "float32",
+    "recovery_every_steps": 25,
+    "seed": 20260729,
+    "selection": [
+      "validation_physical_macro_f1_desc",
+      "validation_physical_nll_asc",
+      "epoch_asc"
+    ],
+    "weight_decay": 0.0001
+  }
+}

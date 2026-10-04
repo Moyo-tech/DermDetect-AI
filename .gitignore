@@ -1,3 +1,93 @@
+# Local filesystem and Python tooling
+.DS_Store
 env/
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.egg-info/
+/build/
+/dist/
 
+# Local credentials/path configuration; examples may be versioned
+.env
+.env.*
+!.env.example
+!.env.template
+/secrets/
+/credentials/
+.aws/
+*.pem
+*.key
+/configs/local/
+/configs/paths.local.*
 
+# Raw, processed and restricted data
+/datasets/
+/processed_image/
+/processed_datasets/
+/aug_dir/
+/data/raw/
+/data/processed/
+/data/ddi/
+/data/restricted/
+/DDI/
+/ddi/
+/HAM10000*/
+/ISIC*/
+*.zip
+*.tar
+*.tar.gz
+/data/manifests/*
+!/data/manifests/README.md
+/data/splits/*
+!/data/splits/README.md
+
+# Checkpoints, downloaded weights, embeddings/caches and experiment outputs
+/checkpoints/
+/model/*
+/models/
+/embeddings/
+/cache/
+/caches/
+/.cache/
+/model_cache/
+*.h5
+*.hdf5
+*.keras
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+/predictions/
+/logs/
+/runs/
+/outputs/
+/wandb/
+/mlruns/
+/results/*
+!/results/README.md
+/figures/*
+!/figures/README.md
+*.log
+
+# Preserve visibility of the already versioned historical checkpoint
+!/model/optimisedmodel121.h5
+
+# Reviewed synthetic fixtures stay visible, including fixture file formats
+!/tests/fixtures/
+!/tests/fixtures/**
+!/tests/synthetic_fixtures/
+!/tests/synthetic_fixtures/**
+
+# Numeric feature/prediction artifacts and dataset tables stay private
+*.npy
+*.npz
+*.parquet
+*.csv
+*.tsv

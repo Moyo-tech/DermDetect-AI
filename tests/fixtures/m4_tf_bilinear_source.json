@@ -1,0 +1,66 @@
+{
+  "source_commit": "6550e4bd80223cdb8be6c3afd1f81e86a4d433c3",
+  "reference": "TF CPU scalar arithmetic, independently compiled C++ -ffp-contract=off; generated in18-case verification",
+  "cases": [
+    {
+      "source": [
+        5,
+        7
+      ],
+      "target": [
+        448,
+        448
+      ],
+      "kind": "gradient",
+      "reference_uint8_sha256": "03adafb6ec19c6d193d1151aedfcac6e5d53fc1e5d68e34a45f52a4c240887ea"
+    },
+    {
+      "source": [
+        512,
+        513
+      ],
+      "target": [
+        448,
+        448
+      ],
+      "kind": "gradient",
+      "reference_uint8_sha256": "3ecb84707c5459ea47bf61f28d68d84b6935699355f8bf650d7c670dd7041fa4"
+    },
+    {
+      "source": [
+        23,
+        19
+      ],
+      "target": [
+        3,
+        4
+      ],
+      "kind": "gradient",
+      "reference_uint8_sha256": "bd7a0048ebb94f4105e5679615b2a1664328cba46bb08113cacabc63a3bc9bea"
+    },
+    {
+      "source": [
+        1,
+        1
+      ],
+      "target": [
+        448,
+        448
+      ],
+      "kind": "constant",
+      "reference_uint8_sha256": "e965e2af5c543236eb13bd05519b3ffa984b5edb2b24d6f0929c1c9661263686"
+    },
+    {
+      "source": [
+        448,
+        448
+      ],
+      "target": [
+        448,
+        448
+      ],
+      "kind": "gradient",
+      "reference_uint8_sha256": "c7a8e50e0e66290cbbffd6de91338002abffad607350e9f12a8d378fd87eb1e9"
+    }
+  ]
+}

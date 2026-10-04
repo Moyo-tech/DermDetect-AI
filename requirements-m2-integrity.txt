@@ -1,0 +1,3 @@
+# User-approved isolated M2 integrity environment (2026-10-02).
+# CPython 3.14 / macOS arm64 ordinary-GIL wheel; no model/training dependencies.
+Pillow==12.3.0 --hash=sha256:e158cb00350dc278f3b91551101aa7d12415a66ebf2c91d8d5ac14e56ddd3ad0
