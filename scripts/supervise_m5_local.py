@@ -20,20 +20,11 @@ def memory_sample(pid):
     if not match:raise ValueError('Cannot verify swap monitor')
     used=float(match.group(1))*(1024**2 if match.group(2)=='M' else 1024**3)
     return dict(RSS_bytes=rss,available_estimate_bytes=available,swap_used_bytes=int(used))
-GiB=1024**3;MiB=1024**2
-# Stage-specific guards. Image stages keep the original limits. Fitting reads only
-# ~75 MB of cached features; a full-scale synthetic M5 fitting run peaked near 1 GiB
-# RSS, so 2 GiB/1.5 GiB still stops well before an 8 GiB host is stressed.
-GUARDS={'benchmark':dict(RSS_max=6*GiB,available_min=4*GiB,swap_growth_max=256*MiB,free_disk_min=8*GiB),
-        'features':dict(RSS_max=6*GiB,available_min=4*GiB,swap_growth_max=256*MiB,free_disk_min=8*GiB),
-        'fitting':dict(RSS_max=2*GiB,available_min=3*GiB//2,swap_growth_max=256*MiB,free_disk_min=8*GiB)}
-def _label(prefix,value):
-    return prefix+(f'{value/GiB:g}GiB' if value>=GiB else f'{value/MiB:g}MiB')
-def reason(sample,baseline,free_disk,guard):
-    if sample['RSS_bytes']>guard['RSS_max']:return _label('RSS',guard['RSS_max'])
-    if sample['available_estimate_bytes']<guard['available_min']:return _label('available_memory',guard['available_min'])
-    if sample['swap_used_bytes']-baseline>guard['swap_growth_max']:return _label('swap_growth',guard['swap_growth_max'])
-    if free_disk<guard['free_disk_min']:return _label('free_disk',guard['free_disk_min'])
+def reason(sample,baseline,free_disk):
+    if sample['RSS_bytes']>6*1024**3:return 'RSS6GiB'
+    if sample['available_estimate_bytes']<4*1024**3:return 'available_memory4GiB'
+    if sample['swap_used_bytes']-baseline>256*1024**2:return 'swap_growth256MiB'
+    if free_disk<8*1024**3:return 'free_disk8GiB'
     return None
 def stage_profile(base,write_root,stage_root):
     old='(deny file-write* (require-not (subpath "'+str(write_root)+'")))'
@@ -63,20 +54,20 @@ def main():
     O=Path(a.output);O.mkdir(); env={'PATH':'/usr/bin:/bin','LC_ALL':'C','HOME':str(O),'TMPDIR':str(O),
          'HF_HOME':str(O/'hf'),'HF_HUB_OFFLINE':'1','TRANSFORMERS_OFFLINE':'1','CUDA_VISIBLE_DEVICES':'',
          'OMP_NUM_THREADS':'2','OPENBLAS_NUM_THREADS':'2','VECLIB_MAXIMUM_THREADS':'2','TOKENIZERS_PARALLELISM':'false'}
-    initial=memory_sample(os.getpid());st=os.statvfs(O);guard=GUARDS[a.stage];why=reason(initial,initial['swap_used_bytes'],st.f_bavail*st.f_frsize,guard)
+    initial=memory_sample(os.getpid());st=os.statvfs(O);why=reason(initial,initial['swap_used_bytes'],st.f_bavail*st.f_frsize)
     if why:raise ValueError('Prelaunch resource guard '+why)
     effective=O/'worker_boundary.sb'
     effective.write_text(stage_profile(Path(a.boundary).read_text(),Path(a.boundary).resolve().parent/'worker-output',O.resolve()))
     # Worker output is a child of the writable guardian root; scientific inputs are profile read-only.
     cmd=['/usr/bin/sandbox-exec','-f',str(effective),a.python,'-B','-I',str(B/'scripts/m5_cpu_worker.py'),
          '--configuration',a.configuration,'--approval',a.approval,'--stage',a.stage,'--output',str(O/'artifacts')]
-    start=time.monotonic();record={'configuration_SHA':sha(config),'stage':a.stage,'elapsed_seconds':0,'status':'started','resource_guard':guard}
+    start=time.monotonic();record={'configuration_SHA':sha(config),'stage':a.stage,'elapsed_seconds':0,'status':'started'}
     history.append(record);ledger.write_text(json.dumps(history,indent=2)+'\n')
     with (O/'stdout.txt').open('x') as stdout,(O/'stderr.txt').open('x') as stderr,(O/'samples.jsonl').open('x') as samples:
         child=subprocess.Popen(cmd,env=env,cwd=B,stdin=subprocess.DEVNULL,stdout=stdout,stderr=stderr,start_new_session=True,close_fds=True)
         try:
             while child.poll() is None:
-                sample=memory_sample(child.pid);st=os.statvfs(O);why=reason(sample,initial['swap_used_bytes'],st.f_bavail*st.f_frsize,guard)
+                sample=memory_sample(child.pid);st=os.statvfs(O);why=reason(sample,initial['swap_used_bytes'],st.f_bavail*st.f_frsize)
                 if time.monotonic()-start>=CAPS[a.stage]:why='CPU_wall_deadline'
                 samples.write(json.dumps(dict(sample,elapsed_seconds=time.monotonic()-start,stop_reason=why))+'\n');samples.flush()
                 if why:os.killpg(child.pid,signal.SIGTERM);break

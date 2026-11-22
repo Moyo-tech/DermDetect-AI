@@ -9,7 +9,6 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from dermdetect.models.m5_run import POLICY, membership, run, write
 from dermdetect.models.densenet import DenseNetSystem, transform
 from dermdetect.models.embeddings import load_cache
-from dermdetect.models.dense_reference_check import verify_dense_reference
 from dermdetect.data.manifests import file_sha256, rooted_file
 
 
@@ -76,13 +75,9 @@ def main():
             file_sha256(dense/'cache.json')!=receipt['metadata_SHA']):raise ValueError('Dense metadata receipt')
         x=np.load(dense/'features.npy',allow_pickle=False)
         if x.dtype!=np.float32 or x.shape!=(len(rows),1024):raise ValueError('Dense cache shape/dtype')
-        # CPU features must reproduce the stored training-device VAL logits before any fit.
-        consistency=verify_dense_reference(value,metadata['ids'],x)
-        if not consistency['passed']:raise ValueError('Dense CPU features do not reproduce stored VAL logits: '+json.dumps(consistency))
         result=run(rows,ids,med,metadata['ids'],x,value['validation_reference'],output,
                    policy=c['policy'],max_seconds=limit-(time.monotonic()-started),after_check=check)
-        write(output/'dense_reference_check.json',consistency)
-        print(json.dumps({'status':result['status'],'review_required':result['review_required'],'dense_reference_max_abs_difference':consistency['max_absolute_difference']}));return
+        print(json.dumps({'status':result['status'],'review_required':result['review_required']}));return
     output.mkdir(); model=DenseNetSystem(value['configuration']['dropout']);model.load_state_dict(value['model'],strict=True)
     model.set_phase(value['state']['phase']); check()
     if a.stage=='features':

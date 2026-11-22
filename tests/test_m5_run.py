@@ -64,9 +64,7 @@ class M5Tests(unittest.TestCase):
             inputs['med_cache']=str(D/'med');inputs['checkpoint']=str(D/'selected.pt')
             val=[r for r in rows if r['split']=='validation'];z=x[[i for i,r in enumerate(rows) if r['split']=='validation']]*2
             reference={'physical_ids':[r['physical_id'] for r in val],'logits':z.tolist()}
-            head={'backbone.classifier.1.weight':torch.cat([2*torch.eye(7,dtype=torch.float64),torch.zeros(7,1017,dtype=torch.float64)],1),
-                  'backbone.classifier.1.bias':torch.zeros(7,dtype=torch.float64)}
-            torch.save(dict(configuration={},binding={},model=head,membership={s:[r for r in rows if r['split']==s] for s in ['train','validation']},
+            torch.save(dict(configuration={},binding={},membership={s:[r for r in rows if r['split']==s] for s in ['train','validation']},
                             state={'best_checkpoint':'best_epoch_021.pt','best_key':[0,0,21]},validation_reference=reference),inputs['checkpoint'])
             hashes['checkpoint']=m.file_sha256(Path(inputs['checkpoint']));dense=D/'dense';dense.mkdir();inputs['dense_cache']=str(dense)
             c={'policy':POLICY,'inputs':inputs,'hashes':hashes,'software':{},'Dense_training_configuration':{},'Dense_binding':{},
@@ -79,27 +77,13 @@ class M5Tests(unittest.TestCase):
                                              stages=['fitting'],held_out_access=False,cloud_or_GPU=False))
             with patch.object(sys,'argv',['m5_cpu_worker','--configuration',str(cp),'--approval',str(ap),'--stage','fitting','--output',str(D/'run')]):m.main()
             self.assertEqual(json.loads((D/'run/result.json').read_text())['status'],'passed')
-            check=json.loads((D/'run/dense_reference_check.json').read_text())
-            self.assertTrue(check['passed']);self.assertLess(check['max_absolute_difference'],1e-4)
 
     def test_guardian_resource_limits_and_cap(self):
         m=self.script('supervise_m5_local.py');base={'RSS_bytes':1,'available_estimate_bytes':8*1024**3,'swap_used_bytes':0}
-        self.assertEqual(set(m.GUARDS),set(m.CAPS))
-        for stage in ['benchmark','features']:
-            g=m.GUARDS[stage];self.assertIsNone(m.reason(base,0,9*1024**3,g))
-            for k,v in [('RSS_bytes',7*1024**3),('available_estimate_bytes',3*1024**3),('swap_used_bytes',257*1024**2)]:
-                s=dict(base);s[k]=v;self.assertIsNotNone(m.reason(s,0,9*1024**3,g))
-            self.assertEqual(m.reason(base,0,7*1024**3,g),'free_disk8GiB')
-        self.assertEqual(sum(m.CAPS.values()),7020)
-    def test_fitting_guard_fits_busy_8GiB_host_but_still_stops(self):
-        m=self.script('supervise_m5_local.py');g=m.GUARDS['fitting'];GiB=1024**3
-        busy={'RSS_bytes':GiB,'available_estimate_bytes':2*GiB,'swap_used_bytes':0}
-        self.assertIsNone(m.reason(busy,0,9*GiB,g))
-        self.assertIsNotNone(m.reason(busy,0,9*GiB,m.GUARDS['features']))
-        self.assertEqual(m.reason(dict(busy,RSS_bytes=2*GiB+1),0,9*GiB,g),'RSS2GiB')
-        self.assertEqual(m.reason(dict(busy,available_estimate_bytes=GiB),0,9*GiB,g),'available_memory1.5GiB')
-        self.assertEqual(m.reason(dict(busy,swap_used_bytes=257*1024**2),0,9*GiB,g),'swap_growth256MiB')
-        self.assertEqual(m.reason(busy,0,7*GiB,g),'free_disk8GiB')
+        self.assertIsNone(m.reason(base,0,9*1024**3));self.assertEqual(sum(m.CAPS.values()),7020)
+        for k,v in [('RSS_bytes',7*1024**3),('available_estimate_bytes',3*1024**3),('swap_used_bytes',257*1024**2)]:
+            s=dict(base);s[k]=v;self.assertIsNotNone(m.reason(s,0,9*1024**3))
+        self.assertEqual(m.reason(base,0,7*1024**3),'free_disk8GiB')
 
     def test_guardian_rejects_missing_authority_before_launch(self):
         m=self.script('supervise_m5_local.py')

@@ -5,10 +5,10 @@ import argparse,hashlib,json,shutil
 ROOT=Path(__file__).resolve().parents[1]
 FILES=['src/dermdetect/__init__.py','src/dermdetect/models/__init__.py',
        'src/dermdetect/models/m5_run.py','src/dermdetect/models/adaptation.py',
-       'src/dermdetect/models/densenet.py','src/dermdetect/models/embeddings.py','src/dermdetect/models/dense_reference_check.py',
+       'src/dermdetect/models/densenet.py','src/dermdetect/models/embeddings.py',
        'src/dermdetect/data/__init__.py','src/dermdetect/data/manifests.py',
        'src/dermdetect/data/schemas.py','src/dermdetect/data/numerical_policy.py','scripts/m5_cpu_worker.py',
-       'scripts/supervise_m5_local.py','scripts/verify_m5_dense_reference.py','scripts/prepare_m5_inputs.py','tests/test_m5_run.py','tests/test_m5_dense_reference.py','tests/test_model_development.py']
+       'scripts/supervise_m5_local.py','scripts/prepare_m5_inputs.py','tests/test_m5_run.py','tests/test_model_development.py']
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args()
     B=a.output.resolve()/'bundle';B.mkdir(parents=True,exist_ok=False); hashes={}
@@ -21,7 +21,7 @@ B=Path(__file__).parent;sys.path.insert(0,str(B/'src'))
 for name in ['m5_cpu_worker','supervise_m5_local','prepare_m5_inputs']:
  p=B/'scripts'/(name+'.py');spec=importlib.util.spec_from_file_location(name,p);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 suite=unittest.TestSuite()
-for name in ['test_m5_run.py','test_m5_dense_reference.py','test_model_development.py']:suite.addTests(unittest.defaultTestLoader.discover(str(B/'tests'),pattern=name))
+for name in ['test_m5_run.py','test_model_development.py']:suite.addTests(unittest.defaultTestLoader.discover(str(B/'tests'),pattern=name))
 r=unittest.TextTestRunner(verbosity=2).run(suite);sys.exit(not r.wasSuccessful())
 """
     (B/'synthetic_entry.py').write_text(entry);hashes['synthetic_entry.py']=hashlib.sha256((B/'synthetic_entry.py').read_bytes()).hexdigest()

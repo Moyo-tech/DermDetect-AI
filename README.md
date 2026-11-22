@@ -27,7 +27,7 @@ The practical question is whether a reusable frozen representation can offer a u
 
 These are research-engineering aims and completed components, not claims of architectural novelty, clinical utility or a finished empirical contribution.
 
-## Current progress — October 2026
+## Current progress — November 2026
 
 | Milestone | Status |
 |---|---|
@@ -35,13 +35,13 @@ These are research-engineering aims and completed components, not claims of arch
 | M2: data integrity and split | Approved physical split of 5,214 / 1,118 / 1,117 units; 8,505 active TRAIN/VAL views; uncertainties retained |
 | M3: model-development runtime | Pinned CPU environment and synthetic model/data contracts verified |
 | M4: bounded development compute | DenseNet completed 22 epochs, selected epoch 21; predictive CUDA reload matched exactly. MedSigLIP cache has 8,505 × 1,152 float32 features; private bindings/hashes/reload checked |
-| M5: probes and calibration | CPU orchestration prepared; real fitting remains unapproved. Actual local memory readiness is a gate |
-| M6: immutable systems/evaluator lock | Pending |
+| M5: probes and calibration | Completed 2026-10-07 on an approved bounded cloud CPU run: 8,505 × 1,024 DenseNet CPU features, 12 fixed-C probe candidates, four temperatures and confidence rules; development VAL only |
+| M6: immutable systems/evaluator lock | Evaluator implemented and tested on invented/development data; actual-model compatibility check and joint lock pending |
 | M7: untouched internal evaluation | Pending separate unseal |
 | M8: external DDI evaluation | Pending permissions, frozen binary systems and separate unseal |
 | M9: reporting and interpretation | Pending completed evaluations |
 
-**No rebuilt held-out or final comparison results are available.** Development validation is used for model selection and is not independent-test evidence. M4 completion does not imply M5 fitting, system freeze or clinical quality.
+**No rebuilt held-out or final comparison results are available.** Development validation is used for model selection and is not independent-test evidence. M5 completion does not imply a system freeze, held-out performance or clinical quality.
 
 ## Human and agent contributions
 
@@ -75,4 +75,4 @@ Fixtures are invented software inputs, not research training data. Platform-spec
 
 Unknown duplicates may remain; recorded physical identities do not prove independent patients. The same validation units support selection, calibration and confidence cutoffs, creating optimistic development estimates. HAM dermoscopy and DDI clinical photographs differ in modality and population. Calibration cannot fix discrimination or establish safety; descriptive subgroup findings cannot prove fairness. There is no deployment threshold or clinical-use claim.
 
-Earlier crashes, resource stops, diagnostic uncertainty and one missing historical recovery binary remain documented in the provenance summary. Successful continuation does not prove a crash's cause or future reliability. The next scientific step is the explicitly reviewed CPU M5 package, followed by system freeze and separate held-out evaluation. Publication of this code does not approve those experiments.
+Earlier crashes, resource stops, diagnostic uncertainty and one missing historical recovery binary remain documented in the provenance summary. Successful continuation does not prove a crash's cause or future reliability. The next scientific step is a bounded actual-model compatibility check, followed by the joint system/evaluator freeze and separate held-out evaluation. Publication of this code does not approve those experiments.
