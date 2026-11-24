@@ -1,6 +1,6 @@
 # Study methods and development status
 
-This is an ongoing, resource-constrained research comparison of two complete systems: an ImageNet-pretrained DenseNet121 with task adaptation, and frozen MedSigLIP image embeddings with a CPU logistic probe. Architecture, input resolution, pretraining data and adaptation differ, so the comparison cannot establish medical pretraining as the causal mechanism. No clinical, fairness or diagnostic-readiness claim is made.
+This is a completed (November 2026), resource-constrained research comparison of two complete systems: an ImageNet-pretrained DenseNet121 with task adaptation, and frozen MedSigLIP image embeddings with a CPU logistic probe. Architecture, input resolution, pretraining data and adaptation differ, so the comparison cannot establish medical pretraining as the causal mechanism. No clinical, fairness or diagnostic-readiness claim is made.
 
 ## Data units and leakage controls
 
@@ -24,7 +24,7 @@ MedSigLIP is pinned to revision9cea28a1a1195f665105faa6e8544c112fd960a4 of[googl
 
 Both checkpoints and caches remain private. No images, real metadata, weights, features, predictions or evaluator outcomes are shipped here. Historical public demo files are separately identified and are not these rebuilt artifacts.
 
-## M5 settings awaiting real-execution approval
+## M5 settings (approved and executed 7 October 2026)
 
 MedSigLIP's seven-class probe uses train-only StandardScaler and multinomial L2 logistic regression with C={.01,.1,1,10}, seed20260729, lbfgs, proposed max_iter1000/tol1e-4. The proposed scaler is unweighted over active TRAIN views; the classifier receives the physical sample weights once. Selection is physical-VAL macroF1 descending, NLL ascending, then smaller C. Pinned sklearn1.7.2 lbfgs normalizes its L2 strength by C×sum(sample_weight); the mean-one convention preserves the usual sample-count C interpretation. Nonconvergence stops for review rather than expanding iterations/grid.
 
@@ -42,4 +42,4 @@ M4 used bounded approved local/cloud development work with explicit manual shutd
 
 M5 ran on 2026-10-07 as an approved bounded cloud CPU job: 8,505×1,024 DenseNet CPU feature extraction, 12 fixed-C candidate fits, 3 TRAIN-only diagnostics, four temperatures and confidence rules, all on TRAIN/VAL development data with the original resource guards (RSS 6GiB/available 4GiB). A later read-only check (2026-11-22, no fitting) confirmed that the selected checkpoint's classifier head applied to those CPU DenseNet VAL features reproduces the stored training-device physical logits (max absolute difference 7.2e-5, atol/rtol 1e-4; argmax agreement 1.0 over 1,118 units); it is a post-hoc verification, not a new run. The same VAL units support selection, calibration and cutoffs, so development values are optimistic.
 
-The worker boundary restricts file reads to staged approved inputs/runtime roots, writes to the current stage output and denies network/helpers/protected sources. It is tested trusted-worker isolation, not owner-proof or hostile-code containment. Runtime/device changes require renewed verification. M6freeze, held-out/internal/DDI evaluation, reporting and publication claims retain separate gates. No M5fit or held-out outcome is implied by this code release.
+The worker boundary restricts file reads to staged approved inputs/runtime roots, writes to the current stage output and denies network/helpers/protected sources. It is tested trusted-worker isolation, not owner-proof or hostile-code containment. Runtime/device changes require renewed verification. The M6 joint lock, the M7 HAM internal-test evaluation and the M8 DDI evaluation have since been completed under separate approvals, each as a single supervised run; see the [final report](final_experiment_report.md) and [reproducibility guide](reproducibility.md). No M5fit or held-out outcome is implied by this code release.

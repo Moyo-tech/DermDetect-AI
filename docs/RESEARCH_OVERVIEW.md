@@ -22,7 +22,7 @@ Read [the detailed methods](METHODS_AND_STATUS.md) for approved versus proposed 
 
 ## What is verified and what remains
 
-M2 integrity/split contracts and M3 runtime preparation are completed within their inspected scopes. M4 completed bounded DenseNet development training and the immutable MedSigLIP development cache, with artifact integrity and reload checks. M5 orchestration has synthetic tests but has not performed real probe/calibration fits. M6 must lock all classifiers, temperatures, rules and evaluator before M7 internal or M8 external unseal. M9 integrates results, compute and limitations after evaluation.
+M2 integrity/split contracts and M3 runtime preparation are completed within their inspected scopes. M4 completed bounded DenseNet development training and the immutable MedSigLIP development cache, with artifact integrity and reload checks. M5 fitted the probes, temperatures and confidence rules on TRAIN/VAL (7 October 2026). M6 locked all four systems and the evaluator (22 November 2026) before any held-out outcome was seen. M7 evaluated the HAM internal test and M8 evaluated DDI, once each (23 November 2026). The results, compute and limitations are in the [final report](final_experiment_report.md).
 
 The public code's software tests use invented metadata/text/pixels/features. They demonstrate implementation contracts, not diagnostic performance or complete duplicate discovery. Source permissions, exact data/artifact hashes, actual runtime/device isolation and approved resource budgets remain prerequisites for real reproduction.
 

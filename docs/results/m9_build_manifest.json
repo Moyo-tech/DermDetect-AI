@@ -1,0 +1,24 @@
+{
+ "inputs": {
+  "M7_compute": "be4236585cd193c5cc9621e2b09a6b24cb654db908a5bb8dda82f56e92e03ca4",
+  "M7_metrics": "05d3cd36515b18413d1939430a37449c5a37e706625696c71d2c137336c875ca",
+  "M7_receipt": "f704be7270fde39ef32efeae5eb8a4329434fed16a3da594e6b764f5c366c9d5",
+  "M8_compute": "1241f94326fa98f765c137e38215432140ea82018502827b875f1619f765fff5",
+  "M8_metrics": "eeb3577620e12531d4b132c30ce3c41b8c020d9b92a4ac0c0bd67df8eb9a6be0",
+  "M8_receipt": "74805d76bedd3f37de5e3397e624f3791065aaceea1c185d7217abcdf0dbddbb"
+ },
+ "model_or_encoder_run": false,
+ "outputs": {
+  "figures/auroc_ham_vs_ddi_groups.svg": "ff00681df5d19ce1ca7cac78b1bfe9afacf9288b2648add58c8c0d795d8d9609",
+  "figures/confusion_ham_seven_class.svg": "30a114154aede9bc2dff55ec249bf50ffbfb9a19db177b39268b18f9a1d8ede4",
+  "figures/reliability_diagrams.svg": "34b13ed55b6cb27679e5c996129b720a4237e6c10d81ad534c4ccbd03ccab734",
+  "figures/risk_coverage_ham.svg": "f6b512bedfab4ac797a3352b91e32590fe225ac8246aefd580d2903af656ee9b",
+  "results/ddi_metrics.csv": "735b8fc25c28cf96245ca2591901898ff989e2370a8db1a30c69bcfd35ea762c",
+  "results/ddi_paired_intervals.csv": "d995bd03a6246b5700996d97eddbbabfc2b4b4ff92af091bb240d84bc652d4e2",
+  "results/ham_confusion_matrices.csv": "c3ed6502c4663e88bb3e0a08561213320b5815c0a064c893748e1402fe830562",
+  "results/ham_internal_test_metrics.csv": "d4c22efef6b832f194f4bda9c6af2db0694dc66679d564155d65c20047a5c119",
+  "results/ham_paired_intervals.csv": "93ef812c3fa8a10b50a01199408df8353664fecba09ce04173516d7da0336389",
+  "results/ham_seven_class_per_class.csv": "3b049c6cafeeed15ad6d110a924084d6ffb91ae1191a8b0995e500e7fed27383"
+ },
+ "per_image_DDI_data_used": false
+}

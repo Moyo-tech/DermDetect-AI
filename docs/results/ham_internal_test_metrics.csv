@@ -1,0 +1,77 @@
+task,system_id,system,physical_units,metric,value
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,macro_F1,0.7362037598544573
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,balanced_accuracy,0.7662397795545919
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,accuracy,0.866112650046168
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,MCC,0.4792254335108923
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,macro_AUROC,0.8967415036665612
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,macro_AP,0.7841914014145124
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,AUROC,0.8967415036665612
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,AP,0.5852531010476412
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,sensitivity,0.6312056737588653
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,specificity,0.9012738853503185
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,NLL,0.28284536877330524
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,multiclass_Brier,0.18173086746012126
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,binary_Brier,0.09086543373006063
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,ECE,0.02702195490968058
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,AURC,0.0295967990104142
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,F1_malignant,0.5510835913312694
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,coverage_at_90pct_cutoff,0.8901200369344414
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,selective_error_at_90pct_cutoff,0.09024896265560166
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,class_balanced_selective_error_at_90pct_cutoff,0.19582670861382678
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,coverage_at_80pct_cutoff,0.7830101569713758
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,selective_error_at_80pct_cutoff,0.06132075471698113
+binary_bcc_mel_vs_benign,dense2,DenseNet121,1083,class_balanced_selective_error_at_80pct_cutoff,0.17942708333333335
+seven_class,dense7,DenseNet121,1117,macro_F1,0.6439235513012244
+seven_class,dense7,DenseNet121,1117,balanced_accuracy,0.6984860514154583
+seven_class,dense7,DenseNet121,1117,accuracy,0.8111011638316921
+seven_class,dense7,DenseNet121,1117,MCC,0.6255849196116516
+seven_class,dense7,DenseNet121,1117,macro_AUROC,0.9522041465371006
+seven_class,dense7,DenseNet121,1117,macro_AP,0.6665599019103858
+seven_class,dense7,DenseNet121,1117,NLL,0.5303685883661333
+seven_class,dense7,DenseNet121,1117,multiclass_Brier,0.27384130733116085
+seven_class,dense7,DenseNet121,1117,ECE,0.053623729214546924
+seven_class,dense7,DenseNet121,1117,AURC,0.05826814627323784
+seven_class,dense7,DenseNet121,1117,coverage_at_90pct_cutoff,0.9015219337511191
+seven_class,dense7,DenseNet121,1117,selective_error_at_90pct_cutoff,0.15988083416087387
+seven_class,dense7,DenseNet121,1117,class_balanced_selective_error_at_90pct_cutoff,0.2756132923522549
+seven_class,dense7,DenseNet121,1117,coverage_at_80pct_cutoff,0.8093106535362579
+seven_class,dense7,DenseNet121,1117,selective_error_at_80pct_cutoff,0.12389380530973451
+seven_class,dense7,DenseNet121,1117,class_balanced_selective_error_at_80pct_cutoff,0.23808915478373088
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,macro_F1,0.7926520102990691
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,balanced_accuracy,0.8359082079775941
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,accuracy,0.8928901200369345
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,MCC,0.5956428842719486
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,macro_AUROC,0.9239734381352487
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,macro_AP,0.830826225183775
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,AUROC,0.9239734381352487
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,AP,0.6743944672031331
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,sensitivity,0.7588652482269503
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,specificity,0.9129511677282378
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,NLL,0.26690327521206075
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,multiclass_Brier,0.1622810114064031
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,binary_Brier,0.08114050570320155
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,ECE,0.02416034750838922
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,AURC,0.02683838819190255
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,F1_malignant,0.6484848484848484
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,coverage_at_90pct_cutoff,0.8938134810710988
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,selective_error_at_90pct_cutoff,0.07231404958677685
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,class_balanced_selective_error_at_90pct_cutoff,0.12712264150943398
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,coverage_at_80pct_cutoff,0.7903970452446907
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,selective_error_at_80pct_cutoff,0.052570093457943924
+binary_bcc_mel_vs_benign,med2,MedSigLIP probe,1083,class_balanced_selective_error_at_80pct_cutoff,0.09718451483157366
+seven_class,med7,MedSigLIP probe,1117,macro_F1,0.7095841134125784
+seven_class,med7,MedSigLIP probe,1117,balanced_accuracy,0.7794620350688667
+seven_class,med7,MedSigLIP probe,1117,accuracy,0.8352730528200537
+seven_class,med7,MedSigLIP probe,1117,MCC,0.6901268782250942
+seven_class,med7,MedSigLIP probe,1117,macro_AUROC,0.9714050264257503
+seven_class,med7,MedSigLIP probe,1117,macro_AP,0.7988955311999556
+seven_class,med7,MedSigLIP probe,1117,NLL,0.4337182487853947
+seven_class,med7,MedSigLIP probe,1117,multiclass_Brier,0.2273353190350068
+seven_class,med7,MedSigLIP probe,1117,ECE,0.026157960158581524
+seven_class,med7,MedSigLIP probe,1117,AURC,0.038771591833461065
+seven_class,med7,MedSigLIP probe,1117,coverage_at_90pct_cutoff,0.8701880035810206
+seven_class,med7,MedSigLIP probe,1117,selective_error_at_90pct_cutoff,0.10390946502057613
+seven_class,med7,MedSigLIP probe,1117,class_balanced_selective_error_at_90pct_cutoff,0.14494244637649548
+seven_class,med7,MedSigLIP probe,1117,coverage_at_80pct_cutoff,0.7770814682184423
+seven_class,med7,MedSigLIP probe,1117,selective_error_at_80pct_cutoff,0.07142857142857142
+seven_class,med7,MedSigLIP probe,1117,class_balanced_selective_error_at_80pct_cutoff,0.09735896815728749

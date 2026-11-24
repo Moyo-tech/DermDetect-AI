@@ -91,3 +91,6 @@ __pycache__/
 *.parquet
 *.csv
 *.tsv
+
+# Aggregate M9 result tables (counts and metrics only; no per-image data)
+!/docs/results/*.csv
