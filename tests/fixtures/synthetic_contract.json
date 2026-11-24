@@ -1,0 +1,202 @@
+{
+  "data_kind": "synthetic",
+  "description": "Invented lesion metadata and unique text payloads. No medical images or real data.",
+  "source": "invented-fixture",
+  "source_version": "1",
+  "split_config": {
+    "seed": 17,
+    "proportions": {
+      "train": 0.6,
+      "validation": 0.2,
+      "internal_test": 0.2
+    }
+  },
+  "lesions": [
+    {
+      "lesion_id": "toy_akiec_L01",
+      "dx": "akiec",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_akiec_L02",
+      "dx": "akiec",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_akiec_L03",
+      "dx": "akiec",
+      "image_count": 3
+    },
+    {
+      "lesion_id": "toy_akiec_L04",
+      "dx": "akiec",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_akiec_L05",
+      "dx": "akiec",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_bcc_L01",
+      "dx": "bcc",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_bcc_L02",
+      "dx": "bcc",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_bcc_L03",
+      "dx": "bcc",
+      "image_count": 3
+    },
+    {
+      "lesion_id": "toy_bcc_L04",
+      "dx": "bcc",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_bcc_L05",
+      "dx": "bcc",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_bkl_L01",
+      "dx": "bkl",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_bkl_L02",
+      "dx": "bkl",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_bkl_L03",
+      "dx": "bkl",
+      "image_count": 3
+    },
+    {
+      "lesion_id": "toy_bkl_L04",
+      "dx": "bkl",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_bkl_L05",
+      "dx": "bkl",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_df_L01",
+      "dx": "df",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_df_L02",
+      "dx": "df",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_df_L03",
+      "dx": "df",
+      "image_count": 3
+    },
+    {
+      "lesion_id": "toy_df_L04",
+      "dx": "df",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_df_L05",
+      "dx": "df",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_mel_L01",
+      "dx": "mel",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_mel_L02",
+      "dx": "mel",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_mel_L03",
+      "dx": "mel",
+      "image_count": 3
+    },
+    {
+      "lesion_id": "toy_mel_L04",
+      "dx": "mel",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_mel_L05",
+      "dx": "mel",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_nv_L01",
+      "dx": "nv",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_nv_L02",
+      "dx": "nv",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_nv_L03",
+      "dx": "nv",
+      "image_count": 3
+    },
+    {
+      "lesion_id": "toy_nv_L04",
+      "dx": "nv",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_nv_L05",
+      "dx": "nv",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_vasc_L01",
+      "dx": "vasc",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_vasc_L02",
+      "dx": "vasc",
+      "image_count": 2
+    },
+    {
+      "lesion_id": "toy_vasc_L03",
+      "dx": "vasc",
+      "image_count": 3
+    },
+    {
+      "lesion_id": "toy_vasc_L04",
+      "dx": "vasc",
+      "image_count": 1
+    },
+    {
+      "lesion_id": "toy_vasc_L05",
+      "dx": "vasc",
+      "image_count": 2
+    }
+  ],
+  "expected": {
+    "images": 63,
+    "lesions": 35,
+    "images_per_class": 9,
+    "lesions_per_class": 5,
+    "lesions_per_split": {
+      "train": 21,
+      "validation": 7,
+      "internal_test": 7
+    }
+  }
+}
